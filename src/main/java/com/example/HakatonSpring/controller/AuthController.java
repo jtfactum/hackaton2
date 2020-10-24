@@ -12,6 +12,9 @@ import com.example.HakatonSpring.payload.response.JwtResponse;
 import com.example.HakatonSpring.payload.response.MessageResponse;
 import com.example.HakatonSpring.security.jwt.JwtUtils;
 import com.example.HakatonSpring.security.services.UserDetailsImpl;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,10 +30,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Slf4j
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+
 	@Autowired
     AuthenticationManager authenticationManager;
 
@@ -69,6 +76,11 @@ public class AuthController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+
+		logger.info("Email" + signUpRequest.getEmail());
+		logger.info("Username" + signUpRequest.getUsername());
+		logger.info("Password" + signUpRequest.getPassword());
+
 		if (userRepository.existsByNameUser(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
@@ -81,8 +93,7 @@ public class AuthController {
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
 
-		// Create new user's account
-		User user = new User(signUpRequest.getUsername(),
+		User user = new User(0, signUpRequest.getUsername(),
 							 signUpRequest.getEmail(),
 							 encoder.encode(signUpRequest.getPassword()));
 
