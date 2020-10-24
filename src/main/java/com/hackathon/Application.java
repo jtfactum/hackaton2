@@ -1,13 +1,13 @@
-package com.example.HakatonSpring;
+package com.hackathon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HakatonSpringApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HakatonSpringApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
