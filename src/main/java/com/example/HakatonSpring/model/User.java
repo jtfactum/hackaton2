@@ -6,7 +6,9 @@ import org.hibernate.stat.Statistics;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -16,10 +18,32 @@ public class User {
     private Integer id_user;
     private String nameUser;
     private String email;
+    private String pass;
     private String dataOfBith;
     private String avatar;
     private String text;
     private Integer balance;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
 //    @OneToMany
 //    private List<History> history;
@@ -28,6 +52,12 @@ public class User {
 //    private List<Statistics> statistics;
 
     public User() {
+    }
+
+    public User(String nameUser, String email, String pass) {
+        this.nameUser = nameUser;
+        this.email = email;
+        this.pass = pass;
     }
 
     public User(Integer id_user, String nameUser, String email, String dataOfBith, String avatar, String text, Integer balance) {
