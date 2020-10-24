@@ -1,10 +1,10 @@
-package com.hackathon;
+package com.example.HakatonSpring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class HakatonSpringApplicationTests {
 
 	@Test
 	void contextLoads() {

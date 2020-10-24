@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>HakatonSpring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>HackathonSpring</name>
+    <name>HakatonSpring</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
