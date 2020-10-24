@@ -1,8 +1,5 @@
 package com.example.HakatonSpring.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,13 +12,13 @@ public class History {
     @ManyToOne
     @JoinColumn(name="user")
     private User user;
-    private EGames eGames;
+    private Games games;
     private String money;
     private String time;
 
-    public History(User user, EGames eGames, String money, String time) {
+    public History(User user, Games games, String money, String time) {
         this.user = user;
-        this.eGames = eGames;
+        this.games = games;
         this.money = money;
         this.time = time;
     }
@@ -45,12 +42,12 @@ public class History {
         this.user = user;
     }
 
-    public EGames geteGames() {
-        return eGames;
+    public Games getGames() {
+        return games;
     }
 
-    public void seteGames(EGames eGames) {
-        this.eGames = eGames;
+    public void setGames(Games games) {
+        this.games = games;
     }
 
     public String getMoney() {

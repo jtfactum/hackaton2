@@ -12,14 +12,14 @@ public class Statistics {
     @ManyToOne
     @JoinColumn(name="user")
     private User user;
-    private EGames eGames;
+    private Games games;
     private Integer win;
     private Integer lose;
     private String earning;
 
-    public Statistics(User user, EGames eGames, Integer win, Integer lose, String earning) {
+    public Statistics(User user, Games games, Integer win, Integer lose, String earning) {
         this.user = user;
-        this.eGames = eGames;
+        this.games = games;
         this.win = win;
         this.lose = lose;
         this.earning = earning;
@@ -44,12 +44,12 @@ public class Statistics {
         this.user = user;
     }
 
-    public EGames geteGames() {
-        return eGames;
+    public Games getGames() {
+        return games;
     }
 
-    public void seteGames(EGames eGames) {
-        this.eGames = eGames;
+    public void setGames(Games games) {
+        this.games = games;
     }
 
     public Integer getWin() {

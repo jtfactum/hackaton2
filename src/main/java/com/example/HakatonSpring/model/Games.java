@@ -1,7 +1,7 @@
 package com.example.HakatonSpring.model;
 
-public enum  EGames {
-    GAMES,
+public enum Games {
+    RASE,
     dsadsa,
 
 }

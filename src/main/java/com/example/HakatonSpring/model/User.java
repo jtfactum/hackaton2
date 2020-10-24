@@ -1,13 +1,7 @@
 package com.example.HakatonSpring.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.stat.Statistics;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id_user;
-    private String nameUser;
+    private String name;
     private String email;
     private String pass;
     private String dataOfBith;
@@ -54,15 +48,15 @@ public class User {
     public User() {
     }
 
-    public User(String nameUser, String email, String pass) {
-        this.nameUser = nameUser;
+    public User(String name, String email, String pass) {
+        this.name = name;
         this.email = email;
         this.pass = pass;
     }
 
-    public User(Integer id_user, String nameUser, String email, String dataOfBith, String avatar, String text, Integer balance) {
+    public User(Integer id_user, String name, String email, String dataOfBith, String avatar, String text, Integer balance) {
         this.id_user = id_user;
-        this.nameUser = nameUser;
+        this.name = name;
         this.email = email;
         this.dataOfBith = dataOfBith;
         this.avatar = avatar;
@@ -78,12 +72,12 @@ public class User {
         this.id_user = id_user;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getName() {
+        return name;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
