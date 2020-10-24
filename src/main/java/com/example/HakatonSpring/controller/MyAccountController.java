@@ -24,32 +24,35 @@ public class MyAccountController {
     @Autowired
     StatisticsRepository statisticsRepository;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
     int num = 0;
     int count = 0;
 
     @GetMapping("/getInfoUser")
     public Optional<User> getUser(@RequestParam String token) {
-        String name = new JwtUtils().getUserNameFromJwtToken(token);
-        return userRepository.findByNameUser(name);
+        String name = jwtUtils.getUserNameFromJwtToken(token);
+        return userRepository.findByName(name);
     }
 
     @GetMapping("/getHistory")
     public Iterable<History> getHistory(@RequestParam String token) {
-        String userName = new JwtUtils().getUserNameFromJwtToken(token);
-        return historyRepository.findAllByUser(userRepository.findByNameUser(userName).get());
+        String userName = jwtUtils.getUserNameFromJwtToken(token);
+        return historyRepository.findAllByUser(userRepository.findByName(userName).get());
     }
 
     @GetMapping("/getStatics")
     public Iterable<Statistics> getStatics(@RequestParam String token) {
-        String userName = new JwtUtils().getUserNameFromJwtToken(token);
-        return statisticsRepository.findAllByUser(userRepository.findByNameUser(userName).get());
+        String userName = jwtUtils.getUserNameFromJwtToken(token);
+        return statisticsRepository.findAllByUser(userRepository.findByName(userName).get());
     }
 
     @PutMapping("/put")
     public boolean putUser(@Valid @RequestBody User user, @RequestParam String token) {
         try {
-            String userName = new JwtUtils().getUserNameFromJwtToken(token);
-            User user1 = userRepository.findByNameUser(userName).get();
+            String userName = jwtUtils.getUserNameFromJwtToken(token);
+            User user1 = userRepository.findByName(userName).get();
             user1.setAvatar(user.getAvatar());
             user1.setPass(user.getPass());
             user1.setDataOfBith(user.getDataOfBith());
@@ -71,8 +74,8 @@ public class MyAccountController {
     public boolean verifyByGame(@RequestParam String token, @RequestParam int num) {
         if (count !=0){
         if (this.num == num) {
-            String userName = new JwtUtils().getUserNameFromJwtToken(token);
-            User user = userRepository.findByNameUser(userName).get();
+            String userName = jwtUtils.getUserNameFromJwtToken(token);
+            User user = userRepository.findByName(userName).get();
             switch (count) {
                 case 1:
                     user.setBalance(user.getBalance()+25);

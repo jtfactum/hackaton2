@@ -81,7 +81,7 @@ public class AuthController {
 		logger.info("Username" + signUpRequest.getUsername());
 		logger.info("Password" + signUpRequest.getPassword());
 
-		if (userRepository.existsByNameUser(signUpRequest.getUsername())) {
+		if (userRepository.existsByName(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Username is already taken!"));
