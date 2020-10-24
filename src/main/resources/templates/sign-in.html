@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LuckyGame</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-success mb-5">
+    <a class="navbar-brand text-white" href="/">LuckyGame</a>
+</nav>
+<form class="row justify-content-center w-25 bg-white h-auto m-auto p-2 rounded border border-secondary"
+      action="/login" method="POST">
+    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        Invalid email or password!
+    </div>
+    <div th:if="${logout}" class="alert alert-info" role="alert">
+        You've been logged out successfully!
+    </div>
+    <div class="form-group">
+        <label for="username" class="sr-only">Email</label>
+        <input type="text" class="form-control" placeholder="Email" id="email" name="email" required
+               autofocus>
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+    </div>
+    <div class="w-100"></div>
+    <button type="submit" class="btn btn-primary">Log in</button>
+    <div class="w-100"></div>
+    <a href="/registration">Sing up</a>
+</form>
+</body>
+</html>

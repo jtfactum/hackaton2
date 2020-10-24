@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LuckyGame</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-success mb-5">
+    <a class="navbar-brand text-white" href="">LuckyGame</a>
+</nav>
+<form class="row justify-content-center w-25 bg-white h-auto m-auto p-2 rounded border border-secondary"
+      action="/register" method="POST">
+    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+    <div th:if="${username}" class="alert alert-danger" role="alert">
+        Email exist!
+    </div>
+    <div th:if="${password}" class="alert alert-danger" role="alert">
+        "Passwords do not match"!
+    </div>
+    <div class="form-group">
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" class="form-control" placeholder="User name" id="username" name="uesername" required
+               autofocus>
+    </div>
+    <div class="form-group">
+        <label for="username" class="sr-only">Email</label>
+        <input type="text" class="form-control" placeholder="Email" id="email" name="email" required
+               autofocus>
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="Confirm password" name="confirmPassword"
+               id="confirmPassword" required>
+    </div>
+    <div class="w-100"></div>
+    <button type="submit" class="btn btn-primary">Sing up</button>
+</form>
+</body>
+</html>
