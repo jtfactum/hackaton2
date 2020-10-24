@@ -54,7 +54,8 @@ public class User {
     public User() {
     }
 
-    public User(String nameUser, String email, String pass) {
+    public User(Integer id_user, String nameUser, String email, String pass) {
+        this.id_user = id_user;
         this.nameUser = nameUser;
         this.email = email;
         this.pass = pass;
