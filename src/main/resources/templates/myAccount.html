@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LuckyGame</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .center {
+            width: 600px; /* Ширина элемента в пикселах */
+            padding: 10px; /* Поля вокруг текста */
+            margin: auto; /* Выравниваем по центру */
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          type="text/css">
+
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-success mb-5">
+    <a class="navbar-brand text-white" href="/">LuckyGame</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="center">
+                <div class="form-group">
+                    <select id="game" name="game" class="form-control">
+                        <option selected>Horse Racing</option>
+                        <option>Balls</option>
+                        <option>Cards</option>
+                        <option>RSP</option>
+                        <option>Tic-Tac-Toe</option>
+                    </select>
+                </div>
+            </div>
+
+        <!--<label text="${balance} mr-md-3" class="mr-md-3">Balance:</label>-->
+        <tr><label text="${balance} mr-md-3" class="mr-md-3">Balance:</label><td th:text="${balance}"></td></tr>
+        <a href="/logout" class="btn btn-primary mr-md-3">My Account</a>
+        <a href="/logout" class="btn btn-primary">log out</a>
+    </div>
+</nav>
+<p class="text-center h3">My Account</p>
+<!--<form action="/myAccount" method="POST">
+    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+    <div class="row container m-auto ">
+        <div class="col">
+            <input type="number" class="form-control" placeholder="Sum" id="sum" name="sum" required step="5">
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <select id="category" name="category" class="form-control">
+                    <option selected>Category</option>
+                    <option>House</option>
+                    <option>Food</option>
+                    <option>Entertainment</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row container m-auto">
+        <div class="col">
+            <textarea class="form-control" placeholder="Note" id="note" name="note" rows="3"></textarea>
+        </div>
+        <div class="col">
+            <div class="row form-group">
+                <label for="day" class="mr-1 mt-1 ml-3">Day:</label>
+                <select id="day" name="day" class="col-1 form-control">
+                    <th:block th:each="i: ${days}">
+                        <option th:text="${i}"></option>
+                    </th:block>
+                </select>
+                <label for="month" class="mr-1 mt-1 ml-1">Month:</label>
+                <select id="month" name="month" class="col-1 form-control">
+                    <th:block th:each="i: ${months}">
+                        <option th:text="${i}"></option>
+                    </th:block>
+                </select>
+                <label for="year" class="mr-1 mt-1 ml-1">Year:</label>
+                <select id="year" name="year" class="col-1 form-control">
+                    <th:block th:each="i: ${years}">
+                        <option th:text="${i}"></option>
+                    </th:block>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <button class="btn btn-danger" type="submit">Button</button>
+    </div>
+</form>-->
+
+
+</body>
+</html>

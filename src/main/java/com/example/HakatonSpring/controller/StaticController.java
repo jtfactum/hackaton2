@@ -1,8 +1,5 @@
 package com.example.HakatonSpring.controller;
 
-import com.example.HakatonSpring.model.User;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +20,17 @@ public class StaticController {
      */
     @GetMapping(value = "/home")
     public String login(Model model) {
-        return "HomePage";
+        return "myAccount";
     }
 
     @GetMapping(value = "/sign-up")
     public String signUp(Model model) {
         return "sign-up";
+    }
+
+    @GetMapping(value = "/myAccount")
+    public String myAccount(Module model) {
+        return "myAccount";
     }
 
 }
